@@ -262,10 +262,24 @@ def main():
 
         # Execute the agent's suggestion method
         if executor.execute_agent(equipment, description):
-            # Ask the user if they want to continue
-            continue_dialogue = input("\033[93m" + "Do you want to continue? (yes/no): " +"\033[0m")
-            if continue_dialogue.lower() != "yes":
-                break
+            while True:
+                # Ask the user for their choice
+                print("\033[93m" + "Please select an option:" + "\033[0m")
+                print("1. Increment the history with this failure mode instance")
+                print("2. Modify the RCM record")
+                print("3. Add a new RCM record")
+                print("4. Continue")
+                print("5. Quit")
+                user_choice = input("\033[93m" + "Your choice: " + "\033[0m")
+
+                if user_choice in ["1", "2", "3"]:
+                    print("Not implemented yet. Please select 4 or 5.")
+                elif user_choice == "4":
+                    break
+                elif user_choice == "5":
+                    return
+                else:
+                    print("Invalid choice. Please enter a number between 1 and 5.")
 
 main()
 
