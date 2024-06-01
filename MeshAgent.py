@@ -51,8 +51,11 @@ class FailureModeAgent:
         # print(f"Description: {description}")
         print(f"Equipment entered: {equipment}")
 
+        # Convert the description to lower case
+        description = description.lower()
+
         # Preprocess the description
-        description = self.preprocess(description)
+        # description = self.preprocess(description)
         # print(f"Preprocessed description: {description}")
         
         # Get the closest equipment name from the database
@@ -62,6 +65,9 @@ class FailureModeAgent:
         # Get the failure modes for the closest equipment
         failure_modes = self.get_failure_modes(closest_equipment_name)
         # print(f"Failure modes: {failure_modes}")
+
+        # Convert the failure modes to lower case
+        failure_modes = [fm.lower() for fm in failure_modes]
 
         # Combine the description with the failure modes
         # documents = [description] + [mode[1] for mode in failure_modes]
